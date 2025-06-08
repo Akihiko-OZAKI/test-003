@@ -1,0 +1,18 @@
+{
+  "t01.png": "This image is a bit dark, which might obscure facial details.",
+  "t02.png": "The bright background makes the face stand out clearly.",
+  "t03.png": "A front-facing photo that captures facial features well.",
+  "t04.png": "Slightly angled, but the full face is visible.",
+  "t05.png": "Wearing sunglasses may make eye recognition difficult.",
+  "t06.png": "A smiling image, highlighting the mouth area.",
+  "t07.png": "The unique hairstyle might affect recognition.",
+  "t08.png": "Shadows from lighting may obscure facial details.",
+  "t09.png": "Very clear image, likely to produce accurate predictions.",
+  "t10.png": "Part of the face is hidden, increasing difficulty.",
+  "t11.png": "High resolution and well-lit environment.",
+  "t12.png": "Somewhat low resolution, may affect detail extraction.",
+  "t13.png": "Neutral expression in a front-facing photo.",
+  "t14.png": "Complex background may confuse the model.",
+  "t15.png": "Slight head tilt gives an asymmetric appearance.",
+  "t16.png": "Close-up image likely to be easy to process."
+}
