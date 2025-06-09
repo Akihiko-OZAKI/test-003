@@ -4,6 +4,12 @@ import json
 import os
 from PIL import Image
 
+#起動確認
+import streamlit as st
+
+st.title("起動確認中")
+st.write("Hello! アプリは動いています！")
+
 # ---------- 初期設定 ----------
 st.set_page_config(page_title="AIモデル比較アプリ", layout="wide")
 
@@ -25,7 +31,7 @@ if not st.session_state.lang_selected:
             st.experimental_rerun()
         except:
             st.error("言語を判別できませんでした。もう一度入力してください。")
-    st.stop()
+    #st.stop()
 
 # ---------- 多言語コメントの読み込み ----------
 def load_comments(lang_code):
