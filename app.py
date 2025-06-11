@@ -27,6 +27,7 @@ if not st.session_state.lang_selected:
             st.session_state.lang = lang_code
             st.session_state.lang_selected = True
             st.experimental_rerun()
+            st.stop()  # 🔴 rerun後にこの行が無いと、処理がループして落ちる可能性がある
         except:
             st.error("言語を判別できませんでした。もう一度入力してください。")
     #st.stop()
