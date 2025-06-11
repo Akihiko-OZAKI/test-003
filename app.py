@@ -7,11 +7,11 @@ from PIL import Image
 #起動確認
 import streamlit as st
 
-st.title("起動確認中")
-st.write("Hello! アプリは動いています！")
-
 # ---------- 初期設定 ----------
 st.set_page_config(page_title="AIモデル比較アプリ", layout="wide")
+
+st.title("起動確認中")
+st.write("Hello! アプリは動いています！")
 
 # セッション状態の初期化
 if "lang" not in st.session_state:
