@@ -7,7 +7,7 @@ from PIL import Image
 # ---------- 初期設定 ----------
 st.set_page_config(page_title="AIモデル比較アプリ", layout="wide")
 
-#起動確認
+# 起動確認
 st.title("起動確認中")
 st.write("Hello! アプリは動いています！")
 
@@ -27,10 +27,9 @@ if not st.session_state.lang_selected:
             st.session_state.lang = lang_code
             st.session_state.lang_selected = True
             st.experimental_rerun()
-            st.stop()  # 🔴 rerun後にこの行が無いと、処理がループして落ちる可能性がある
+            st.stop()
         except:
             st.error("言語を判別できませんでした。もう一度入力してください。")
-    #st.stop()
 
 # ---------- 多言語コメントの読み込み ----------
 def load_comments(lang_code):
@@ -52,17 +51,21 @@ selected_image = st.sidebar.selectbox("画像ファイルを選択", image_files
 
 image_path = os.path.join("images", selected_image)
 image = Image.open(image_path)
-st.image(image, caption=selected_image, width=300)
 
-# ---------- コメント表示 ----------
-image_key = os.path.splitext(selected_image)[0]  # 例: 't01'
-comment = comments.get(image_key, "この画像に対応するコメントはありません。")
-st.write(f"📝 コメント: {comment}")
+# ---------- モデル名の一覧 ----------
+model_names = ["HOG+SVM", "SIFT+SVM", "ResNet18"]
 
-# ---------- モデル選択と予測結果 ----------
-st.sidebar.title("モデルを選択")
-model_name = st.sidebar.radio("使用するモデル", ["HOG+SVM", "ResNet18"])
-
+# ---------- 予測ボタン ----------
 if st.button("この画像で予測する"):
-    # （仮）推論結果のサンプル表示
-    st.success(f"✅ モデル [{model_name}] による予測：これは仮の結果です。推論APIと接続予定。")
+    st.subheader("🧠 モデル別予測結果")
+    cols = st.columns(3)
+    for i, model in enumerate(model_names):
+        with cols[i]:
+            st.image(image, caption=f"{model}", use_column_width=True)
+            st.success(f"✅ {model} による予測：仮の結果（ここにAPI結果）")
+
+    # ---------- コメント表示 ----------
+    st.subheader("📝 コメント")
+    image_key = os.path.splitext(selected_image)[0]
+    comment = comments.get(image_key, "この画像に対応するコメントはありません。")
+    st.write(comment)
